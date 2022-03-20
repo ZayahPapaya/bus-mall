@@ -1,3 +1,6 @@
 * {
   box-sizing: border-box;
 }
+img {
+  height: 250px;
+}
