@@ -1,11 +1,13 @@
 'use strict'
 const gridContainer = document.getElementById('grid-container');
 const start = document.getElementById('start');
-const results = document.getElementById('results');
+const resultsButton = document.getElementById('resultsButton');
+const resultsList = document.getElementById('results');
 const sessionRounds = 25;
 const varietyCount = 3;
 let currentRounds = 0;
 let advertList;
+let lock = false;
 // varietyCount <= adArray.length is REQUIRED or else getRandom() goes infinite
 function Ad(name, imagePath) {
   this.name = name;
@@ -13,7 +15,7 @@ function Ad(name, imagePath) {
   this.viewCount = 0;
   this.clickCount = 0;
 };
-let adArray = [
+let adArray = [ // Repeat product names are NOT supported
   new Ad('Bag', "img/bag.jpg"),
   new Ad('Banana', "img/banana.jpg"),
   new Ad('Bathroom', "img/bathroom.jpg"),
@@ -71,41 +73,44 @@ Ad.prototype.render = function() {
     adArray[imageSet[i]].viewCount++;
   }
 }
-// Ad.prototype.clickyEvent = function(clicky) {
-//   for(let j = 0; j < adArray.length; j++){
-//     if(clicky === adArray[advertList[j]].name){
-//       adArray[advertList[j]].clickCount++;
-//     }
-//   }
-// }
  start.addEventListener('click', function (eventStart) {
    eventStart.preventDefault();
-   start.textContent = 'Next set!';
+   start.remove();
    currentRounds++;
    console.log(currentRounds);
    console.log('Starting', eventStart);
    Ad.prototype.render();
  });
- results.addEventListener('click', function (eventResults){
+ resultsButton.addEventListener('click', function (eventResults){
    eventResults.preventDefault();
    if(currentRounds >= sessionRounds){
-     results.textContent = 'Refresh results';
+     resultsButton.remove();
+     lock = true;
      console.log('Show results'); // print a table of the results here
+     for(let i = 0; i < adArray.length; i++) {
+       let li = document.createElement('li');
+       resultsList.appendChild(li);
+       li.textContent = `${adArray[i].name}: ${adArray[i].viewCount} views, ${adArray[i].clickCount} clicks`;
+     }
    } else {
-     console.log('Not enough sessions');
+     alert('Not enough sessions');
    }
  });
  gridContainer.addEventListener('click',function (eventAdClick){
    eventAdClick.preventDefault();
+   if(lock === false && currentRounds <= sessionRounds){
+   currentRounds++;
    let clicky = eventAdClick.target.id
    for(let i = 0; i < advertList.length; i++){
      if(clicky === adArray[advertList[i]].name){
        for(let j = 0; j < adArray.length; j++){
          if(clicky === adArray[j].name) {
            adArray[j].clickCount++;
-           console.log(adArray[j].clickCount, 'Yo');
+           console.log(adArray[j].clickCount, adArray[j].name);
          }
        }
      }
     }
+    Ad.prototype.render();
+  }
  });
