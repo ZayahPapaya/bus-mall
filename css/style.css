@@ -4,7 +4,7 @@
 main {
   display: grid;
   grid-template-columns: auto, 250px;
-  grid-template-rows: 6 250px;
+  grid-template-rows: 6, 250px;
 }
 #leftPanel {
   outline: 2px;
@@ -13,6 +13,7 @@ main {
   grid-column: 1 / 2;
   grid-row: 1 / 6;
   padding: 5px;
+  width: fit-content;
 }
 #grid-container {
   outline: 2px;
@@ -32,6 +33,7 @@ article {
   outline: 2px;
   outline-color: black;
   outline-style: inset;
+  width: 600px;
 }
 .hidden {
   visibility: hidden;
