@@ -77,9 +77,7 @@ Ad.prototype.render = function () {
   }
 };
 Storage.prototype.setObject = function(key, value) {
-  console.log(key, value, 'setObject');
   this.setItem(key, JSON.stringify(value));
-  console.log(key, value, 'setObject');
 }
 
 Storage.prototype.getObject = function(key) {
@@ -89,11 +87,12 @@ Storage.prototype.getObject = function(key) {
 
 Ad.prototype.saveData = function() {
     localStorage.setObject('adArray', adArray);
+    localStorage.setItem('currentRounds', currentRounds);
 }
 
 Ad.prototype.initialLoad = function() {
     adArray = localStorage.getObject('adArray');
-    console.log('Loaded');
+    currentRounds = parseInt(localStorage.getItem('currentRounds')) || 0;
 }
 
 function defineData() {
@@ -118,7 +117,6 @@ resultsButton.addEventListener('click', function (eventResults) {
     resultsButton.remove();
     chartRender();
     lock = true;
-    console.log('Show results'); // print a table of the results here
     for (let i = 0; i < adArray.length; i++) {
       let li = document.createElement('li');
       resultsList.appendChild(li);
