@@ -44,11 +44,13 @@ let adArray = [ // Repeat product names are NOT supported
   new Ad('Coconut', "img/coconut.jpg"),
   new Ad('Rail Tiger', "img/railtiger.png"),
 ];
-
+let length = adArray.length;
+console.log(adArray.length);
 Ad.prototype.getRandom = function () {
   let selectionCheck = [];
   let selectionHold;
   for (let i = 0; i < varietyCount; i++) {
+    console.log(adArray.length, 'length');
     selectionHold = Math.floor(Math.random() * adArray.length);
     if (selectionCheck.includes(selectionHold) || advertList.includes(selectionHold)) {
       i--;
@@ -192,4 +194,7 @@ function chartRender() {
     }
   });
 }
+if(!localStorage.key('currentRounds') == 0){
 Ad.prototype.initialLoad();
+console.log('Local 0');
+}
