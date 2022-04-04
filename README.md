@@ -8,9 +8,10 @@ This is my bus mall application that displays a variable amount of advertisement
 
 ### Links and Resources
 
-~
+<https://stackoverflow.com/questions/37292423/chart-js-label-color>
 
 ### Reflections and Comments
 
-- Consider including the answers to your daily journal and submission questions here
-- This is also a good place to reflect on the tools and resources used and learned
+- Bus Mall is a fun project with some troublesome points. I found it more difficult to pick up a different bus mall and work on it over just writing my own.
+- Initially, localstorage was a bit of a pain to wrap my head around but quickly became quite easy. Especially with my abominable global object methods in play!
+- I cannot stand Chart.js's documentation. It is absolutely barebones and a pain in my rear to find the actual syntax required. It took far too long to even add a simple color.

@@ -186,10 +186,36 @@ function chartRender() {
       }]
     },
     options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: "white",
+            font: {
+              size: 18
+            }
+          }
+        }
+      },
       scales: {
         y: {
+          ticks: {
+          color: "white",
+          font: {
+            size: 18,
+          },
           beginAtZero: true
         }
+      },
+      x: {
+        ticks: {
+          color: "white",
+          font: {
+            size: 12
+          },
+          stepSize: 1,
+          beginAtZero: true
+        }
+      }
       }
     }
   });
