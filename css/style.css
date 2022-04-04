@@ -14,6 +14,7 @@ main {
   grid-row: 1 / 6;
   padding: 5px;
   width: fit-content;
+  color: white;
 }
 #grid-container {
   outline: 2px;
@@ -58,6 +59,7 @@ h1 {
   margin-top: 20px;
   margin-left: 150px;
   height: 50px;
+  color: white
 }
 #headImg {
   height: 50px;
@@ -65,4 +67,10 @@ h1 {
   position: absolute;
   top: 10px;
   left: 10px;
+}
+body {
+  background-image: linear-gradient(blue, purple, blue)
+}
+#myChart{
+  color: white;
 }
